@@ -136,4 +136,6 @@ function Show-FstMainMenu {
     } while ($true)
 }
 
-Export-ModuleMember -Function Show-FstMainMenu
+Export-ModuleMember -Function `
+    New-FstSession, `
+    Show-FstMainMenu
