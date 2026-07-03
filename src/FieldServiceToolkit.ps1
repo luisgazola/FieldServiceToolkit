@@ -5,6 +5,7 @@ $ErrorActionPreference = "Stop"
 
 $modulePath = Join-Path $PSScriptRoot "Modules"
 
+Import-Module "$modulePath\Ui.psm1" -Force
 Import-Module "$modulePath\Validation.psm1" -Force
 Import-Module "$modulePath\Hardware.psm1" -Force
 Import-Module "$modulePath\Battery.psm1" -Force
