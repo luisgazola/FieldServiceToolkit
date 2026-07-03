@@ -1,45 +1,3 @@
-function New-FstSession {
-    [CmdletBinding()]
-    param()
-
-    Clear-Host
-
-    Write-Host "========================================" -ForegroundColor Cyan
-    Write-Host " FIELD SERVICE TOOLKIT" -ForegroundColor Cyan
-    Write-Host " Diagnóstico técnico para Field Service" -ForegroundColor Cyan
-    Write-Host "========================================" -ForegroundColor Cyan
-    Write-Host ""
-
-    $technicianName = Read-FstRequiredInput `
-        -Label "Nome do técnico" `
-        -RegexPattern '^[\p{L}\s.-]{3,60}$' `
-        -ErrorMessage "Informe um nome válido."
-
-    $clientName = Read-FstRequiredInput `
-        -Label "Cliente / Escola" `
-        -RegexPattern '^[\p{L}\p{N}\s._-]{2,80}$' `
-        -ErrorMessage "Informe um cliente válido."
-
-    $ticketNumber = Read-FstRequiredInput `
-        -Label "Número do chamado" `
-        -RegexPattern '^[A-Za-z0-9][A-Za-z0-9._-]{2,40}$' `
-        -ErrorMessage "Use apenas letras, números, ponto, hífen ou underline."
-
-    return [ordered]@{
-        TechnicianName     = $technicianName
-        ClientName         = $clientName
-        TicketNumber       = $ticketNumber
-        SystemInfo         = $null
-        StorageInfo        = $null
-        BatteryInfo        = $null
-        NetworkInfo        = $null
-        BitLockerInfo      = $null
-        WindowsUpdateInfo  = $null
-        WindowsErrors      = $null
-        PowerPolicyChanges = @()
-    }
-}
-
 function Show-FstMainMenu {
     [CmdletBinding()]
     param()
@@ -47,96 +5,131 @@ function Show-FstMainMenu {
     $session = New-FstSession
 
     do {
-        Write-Host ""
-        Write-Host "================ MENU PRINCIPAL ================" -ForegroundColor Cyan
-        Write-Host "1  - Diagnóstico completo"
-        Write-Host "2  - Hardware"
-        Write-Host "3  - SSD / NVMe / HD"
-        Write-Host "4  - Bateria"
-        Write-Host "5  - Rede"
-        Write-Host "6  - BitLocker"
-        Write-Host "7  - Windows Update"
-        Write-Host "8  - Logs do Windows"
-        Write-Host "9  - Energia"
-        Write-Host "10 - Gerar relatório"
-        Write-Host "0  - Sair"
-        Write-Host "================================================"
-        Write-Host ""
+        Write-FstHeader
+        Write-FstSection "Menu principal"
 
+        Show-FstOption "1"  "Diagnóstico completo" "Executa todos os módulos principais"
+        Show-FstOption "2"  "Hardware" "Placa-mãe, CPU, RAM e serial da BIOS"
+        Show-FstOption "3"  "Armazenamento" "SSD, NVMe, HD e status SMART"
+        Show-FstOption "4"  "Bateria" "Carga, estado e sugestão técnica"
+        Show-FstOption "5"  "Rede" "Gateway, DNS e internet sem alterar configurações"
+        Show-FstOption "6"  "BitLocker" "Status de criptografia dos volumes"
+        Show-FstOption "7"  "Windows Update" "Atualizações pendentes"
+        Show-FstOption "8"  "Logs do Windows" "Eventos críticos, erros e avisos"
+        Show-FstOption "9"  "Energia" "Opções controladas de energia"
+        Show-FstOption "10" "Gerar relatório" "Cria relatório TXT do atendimento"
+        Show-FstOption "0"  "Sair" "Finaliza o toolkit"
+
+        Write-Host ""
         $choice = Read-Host "Escolha uma opção"
 
         if ($choice -notmatch '^(0|[1-9]|10)$') {
-            Write-Host "Opção inválida." -ForegroundColor Yellow
+            Write-FstWarning "Opção inválida."
+            Pause-FstScreen
             continue
         }
 
         switch ($choice) {
             "1" {
-                Write-Host "Executando diagnóstico completo..." -ForegroundColor Yellow
-                $session.SystemInfo         = Get-FstSystemInfo
-                $session.StorageInfo        = Get-FstStorageHealth
-                $session.BatteryInfo        = Get-FstBatteryInfo
-                $session.NetworkInfo        = Test-FstNetwork
-                $session.BitLockerInfo      = Get-FstBitLockerStatus
-                $session.WindowsUpdateInfo  = Get-FstWindowsUpdateStatus
-                $session.WindowsErrors      = Get-FstRecentWindowsErrors
-                Write-Host "Diagnóstico completo finalizado." -ForegroundColor Green
+                Write-FstSection "Diagnóstico completo"
+                Write-FstStep "Coletando hardware..."
+                $session.SystemInfo = Get-FstSystemInfo
+
+                Write-FstStep "Verificando armazenamento..."
+                $session.StorageInfo = Get-FstStorageHealth
+
+                Write-FstStep "Verificando bateria..."
+                $session.BatteryInfo = Get-FstBatteryInfo
+
+                Write-FstStep "Testando rede..."
+                $session.NetworkInfo = Test-FstNetwork
+
+                Write-FstStep "Verificando BitLocker..."
+                $session.BitLockerInfo = Get-FstBitLockerStatus
+
+                Write-FstStep "Consultando Windows Update..."
+                $session.WindowsUpdateInfo = Get-FstWindowsUpdateStatus
+
+                Write-FstStep "Lendo logs do Windows..."
+                $session.WindowsErrors = Get-FstRecentWindowsErrors
+
+                Write-FstSuccess "Diagnóstico completo finalizado."
+                Pause-FstScreen
             }
 
             "2" {
+                Write-FstSection "Hardware"
                 $session.SystemInfo = Get-FstSystemInfo
                 $session.SystemInfo | Format-List
+                Pause-FstScreen
             }
 
             "3" {
+                Write-FstSection "Armazenamento"
                 $session.StorageInfo = Get-FstStorageHealth
                 $session.StorageInfo | Format-Table
+                Pause-FstScreen
             }
 
             "4" {
+                Write-FstSection "Bateria"
                 $session.BatteryInfo = Get-FstBatteryInfo
                 $session.BatteryInfo | Format-List
+                Pause-FstScreen
             }
 
             "5" {
+                Write-FstSection "Rede"
                 $session.NetworkInfo = Test-FstNetwork
                 $session.NetworkInfo | Format-List
+                Pause-FstScreen
             }
 
             "6" {
+                Write-FstSection "BitLocker"
                 $session.BitLockerInfo = Get-FstBitLockerStatus
                 $session.BitLockerInfo | Format-Table
+                Pause-FstScreen
             }
 
             "7" {
+                Write-FstSection "Windows Update"
                 $session.WindowsUpdateInfo = Get-FstWindowsUpdateStatus
                 $session.WindowsUpdateInfo | Format-List
+                Pause-FstScreen
             }
 
             "8" {
+                Write-FstSection "Logs do Windows"
                 $session.WindowsErrors = Get-FstRecentWindowsErrors
                 $session.WindowsErrors | Format-List
+                Pause-FstScreen
             }
 
             "9" {
                 $session.PowerPolicyChanges += Show-FstPowerPolicyMenu
                 $session.PowerPolicyChanges | Format-List
+                Pause-FstScreen
             }
 
             "10" {
+                Write-FstSection "Relatório"
+
                 if (-not $session.SystemInfo) {
+                    Write-FstInfo "Coletando identificação mínima do equipamento..."
                     $session.SystemInfo = Get-FstSystemInfo
                 }
 
                 $reportPath = New-FstReport -Session $session
 
-                Write-Host ""
-                Write-Host "Relatório gerado com sucesso:" -ForegroundColor Green
+                Write-FstSuccess "Relatório gerado com sucesso."
                 Write-Host $reportPath -ForegroundColor Green
+
+                Pause-FstScreen
             }
 
             "0" {
-                Write-Host "Encerrando Field Service Toolkit." -ForegroundColor Cyan
+                Write-FstSuccess "Encerrando Field Service Toolkit."
                 return
             }
         }
