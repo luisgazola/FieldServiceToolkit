@@ -94,13 +94,17 @@ function Show-FstPowerPolicyMenu {
     [CmdletBinding()]
     param()
 
+    Write-FstHeader -Title "ENERGIA" -Subtitle "Configurações controladas de energia"
+    Write-FstSection "Opções disponíveis"
+
+    Show-FstOption "1" "Fechar tampa e desligar" "Notebook será desligado ao fechar o display"
+    Show-FstOption "2" "Bloquear suspensão" "Não suspende, não hiberna e não desliga tela"
+    Show-FstOption "3" "Aplicar tudo" "Usa as duas configurações acima"
+    Show-FstOption "0" "Voltar" "Retorna ao menu principal"
+
     Write-Host ""
-    Write-Host "=========== ENERGIA ===========" -ForegroundColor Cyan
-    Write-Host "1 - Fechar tampa/display e desligar notebook"
-    Write-Host "2 - Não suspender, não hibernar e não desligar tela"
-    Write-Host "3 - Aplicar as duas opções"
-    Write-Host "0 - Voltar"
-    Write-Host "==============================="
+    Write-FstWarning "Use somente com autorização do cliente."
+    Write-FstInfo "Rede, VPN, DNS, proxy, firewall e BitLocker não serão alterados."
     Write-Host ""
 
     $choice = Read-Host "Escolha uma opção"
