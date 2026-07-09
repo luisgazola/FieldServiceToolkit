@@ -1,0 +1,14 @@
+{
+  "Version": "1.0.0",
+  "Thresholds": {
+    "CpuUsagePercent": { "OkMax": 75, "WarningMax": 90 },
+    "MemoryUsagePercent": { "OkMax": 75, "WarningMax": 90 },
+    "DiskUsagePercent": { "OkMax": 80, "WarningMax": 90 },
+    "DiskTemperatureC": { "OkMax": 50, "WarningMax": 60 },
+    "BatteryWearPercent": { "OkMax": 20, "WarningMax": 40 },
+    "GatewayLatencyMs": { "OkMax": 30, "WarningMax": 100 },
+    "InternetLatencyMs": { "OkMax": 80, "WarningMax": 200 },
+    "CriticalEventsLastDays": { "OkMax": 0, "WarningMax": 5 },
+    "DriverErrors": { "OkMax": 0, "WarningMax": 3 }
+  }
+}
