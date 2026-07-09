@@ -95,3 +95,12 @@ Formatos gerados:
 - `Docs/REQUISITOS-FUNCIONAIS.md`
 - `Docs/REQUISITOS-NAO-FUNCIONAIS.md`
 - `Docs/DEVELOPER-GUIDE.md`
+
+
+## Governança do Projeto
+
+O escopo, princípios, arquitetura, critérios de qualidade e regras de evolução estão definidos em:
+
+- `PROJECT_CHARTER.md`
+
+Esse documento deve orientar qualquer nova funcionalidade para manter o foco no uso real de Field Service.
