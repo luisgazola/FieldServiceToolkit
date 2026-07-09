@@ -1,35 +1,27 @@
-# FieldServiceSuite MVC
+# FieldServiceSuite
 
-Ferramenta PowerShell para o dia a dia de Field Service, estruturada em padrão MVC adaptado para scripts modulares.
+Ferramenta em PowerShell para técnicos de **Field Service**, focada em registro de atendimento, inventário de hardware, diagnóstico rápido, troubleshooting guiado, dashboard e relatório técnico.
 
 ## Objetivo
 
-Registrar atendimento, coletar inventário, executar diagnóstico rápido, orientar troubleshooting, exibir dashboard e gerar relatórios em HTML, TXT e JSON.
+Ajudar o técnico no atendimento diário sem transformar o projeto em uma suíte pesada. O foco é ser prático, portátil, claro e útil em campo.
 
-## Arquitetura MVC
+## Recursos principais
 
-```text
-FieldServiceSuite
-├── Start.ps1
-├── App
-│   ├── Core
-│   │   └── Bootstrap.ps1
-│   ├── Models
-│   ├── Views
-│   ├── Controllers
-│   └── Services
-├── Config
-├── Reports
-├── Logs
-└── Docs
-```
-
-## Camadas
-
-- **Models**: objetos de dados do atendimento e diagnóstico.
-- **Views**: interface de console, menu e dashboard.
-- **Controllers**: orquestração do fluxo de uso.
-- **Services**: coleta técnica, regras, recomendações, relatórios, logs e validações.
+- Cadastro do atendimento com validação por Regex.
+- Inventário de hardware.
+- Diagnóstico rápido.
+- Análise de disco/SMART.
+- Análise de bateria.
+- Diagnóstico de rede.
+- Verificação de drivers com erro.
+- Configurações práticas de energia.
+- Troubleshooting guiado por sintoma.
+- Motor simples de regras.
+- Recomendações automáticas.
+- Dashboard no terminal.
+- Relatórios em HTML, TXT e JSON.
+- Organização por chamado e número de série.
 
 ## Execução
 
@@ -56,14 +48,68 @@ Set-ExecutionPolicy -Scope Process Bypass
 0. Sair
 ```
 
+## Estrutura
+
+```text
+FieldServiceSuite
+├── Start.ps1
+├── App
+│   ├── Core
+│   ├── Models
+│   ├── Views
+│   ├── Controllers
+│   └── Services
+├── Config
+├── Reports
+├── Logs
+├── Docs
+└── Tests
+```
+
 ## Relatórios
+
+Os relatórios são salvos em:
 
 ```text
 Reports\ANO\MES\DIA\CHAMADO-SERIAL\
 ```
 
-Arquivos gerados:
+Formatos:
 
-- `relatorio.html`
-- `relatorio.txt`
-- `relatorio.json`
+- HTML
+- TXT
+- JSON
+
+## Documentação
+
+- `Docs/GUIA-DE-USO.md`
+- `Docs/REQUISITOS-FUNCIONAIS.md`
+- `Docs/REQUISITOS-NAO-FUNCIONAIS.md`
+- `Docs/ARQUITETURA-MVC-DETALHADA.md`
+- `Docs/FLUXOGRAMAS-E-DIAGRAMAS.md`
+- `Docs/TROUBLESHOOTING.md`
+- `Docs/CONFIGURACAO.md`
+- `Docs/RELATORIOS.md`
+- `Docs/CONVENCOES.md`
+- `Docs/TESTES.md`
+- `Docs/ROADMAP.md`
+
+## Arquitetura
+
+O projeto usa MVC adaptado para PowerShell:
+
+- `Models`: dados do atendimento e diagnóstico.
+- `Views`: interface do terminal e dashboard.
+- `Controllers`: fluxo da aplicação.
+- `Services`: diagnóstico, regras, configuração, logs e relatórios.
+
+## Requisitos
+
+- Windows 10 ou Windows 11.
+- PowerShell 5.1 ou PowerShell 7+.
+- Permissão administrativa recomendada para algumas coletas.
+
+## Status
+
+Versão atual: `v1.1-MVC-Docs`.
+
