@@ -27,10 +27,12 @@ function Initialize-FssState {
 
 function Start-FssApplication {
     param([string]$RootPath)
-    Import-FssLayer "$RootPath\App\Models"
-    Import-FssLayer "$RootPath\App\Views"
-    Import-FssLayer "$RootPath\App\Services"
-    Import-FssLayer "$RootPath\App\Controllers"
+    Import-FssLayer "$RootPath\src\Helpers"
+    Import-FssLayer "$RootPath\src\Validators"
+    Import-FssLayer "$RootPath\src\Models"
+    Import-FssLayer "$RootPath\src\Views"
+    Import-FssLayer "$RootPath\src\Services"
+    Import-FssLayer "$RootPath\src\Controllers"
     Initialize-FssState -RootPath $RootPath
     Invoke-FssMainController
 }

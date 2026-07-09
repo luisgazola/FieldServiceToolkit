@@ -1,27 +1,27 @@
 # FieldServiceSuite
 
-Ferramenta em PowerShell para técnicos de **Field Service**, focada em registro de atendimento, inventário de hardware, diagnóstico rápido, troubleshooting guiado, dashboard e relatório técnico.
+Ferramenta PowerShell para técnico de **Field Service** registrar atendimento, coletar inventário de hardware, executar diagnóstico rápido, seguir troubleshooting guiado, visualizar dashboard e gerar relatório técnico.
 
-## Objetivo
+## Versão
 
-Ajudar o técnico no atendimento diário sem transformar o projeto em uma suíte pesada. O foco é ser prático, portátil, claro e útil em campo.
+`v1.2.0` — arquitetura `src` com MVC + Service Layer.
 
-## Recursos principais
+## Funcionalidades
 
-- Cadastro do atendimento com validação por Regex.
-- Inventário de hardware.
-- Diagnóstico rápido.
-- Análise de disco/SMART.
-- Análise de bateria.
-- Diagnóstico de rede.
-- Verificação de drivers com erro.
-- Configurações práticas de energia.
-- Troubleshooting guiado por sintoma.
-- Motor simples de regras.
-- Recomendações automáticas.
-- Dashboard no terminal.
-- Relatórios em HTML, TXT e JSON.
-- Organização por chamado e número de série.
+- Cadastro do atendimento com Regex
+- Inventário de hardware
+- Diagnóstico rápido
+- Disco/SMART
+- Bateria
+- Rede
+- Energia
+- Drivers
+- Checklist manual
+- Troubleshooting guiado
+- Motor simples de regras
+- Recomendações automáticas
+- Dashboard
+- Relatórios em HTML, TXT e JSON
 
 ## Execução
 
@@ -53,17 +53,22 @@ Set-ExecutionPolicy -Scope Process Bypass
 ```text
 FieldServiceSuite
 ├── Start.ps1
-├── App
+├── src
 │   ├── Core
-│   ├── Models
-│   ├── Views
 │   ├── Controllers
-│   └── Services
+│   ├── Models
+│   ├── Services
+│   ├── Views
+│   ├── Helpers
+│   ├── Validators
+│   └── RulesEngine
 ├── Config
-├── Reports
-├── Logs
+├── KnowledgeBase
+├── Assets
 ├── Docs
-└── Tests
+├── Tests
+├── Reports
+└── Logs
 ```
 
 ## Relatórios
@@ -74,7 +79,7 @@ Os relatórios são salvos em:
 Reports\ANO\MES\DIA\CHAMADO-SERIAL\
 ```
 
-Formatos:
+Formatos gerados:
 
 - HTML
 - TXT
@@ -82,34 +87,11 @@ Formatos:
 
 ## Documentação
 
+- `Docs/ARCHITECTURE.md`
+- `Docs/DIAGRAMS.md`
+- `Docs/MVC-SERVICE-LAYER.md`
 - `Docs/GUIA-DE-USO.md`
+- `Docs/TROUBLESHOOTING.md`
 - `Docs/REQUISITOS-FUNCIONAIS.md`
 - `Docs/REQUISITOS-NAO-FUNCIONAIS.md`
-- `Docs/ARQUITETURA-MVC-DETALHADA.md`
-- `Docs/FLUXOGRAMAS-E-DIAGRAMAS.md`
-- `Docs/TROUBLESHOOTING.md`
-- `Docs/CONFIGURACAO.md`
-- `Docs/RELATORIOS.md`
-- `Docs/CONVENCOES.md`
-- `Docs/TESTES.md`
-- `Docs/ROADMAP.md`
-
-## Arquitetura
-
-O projeto usa MVC adaptado para PowerShell:
-
-- `Models`: dados do atendimento e diagnóstico.
-- `Views`: interface do terminal e dashboard.
-- `Controllers`: fluxo da aplicação.
-- `Services`: diagnóstico, regras, configuração, logs e relatórios.
-
-## Requisitos
-
-- Windows 10 ou Windows 11.
-- PowerShell 5.1 ou PowerShell 7+.
-- Permissão administrativa recomendada para algumas coletas.
-
-## Status
-
-Versão atual: `v1.1-MVC-Docs`.
-
+- `Docs/DEVELOPER-GUIDE.md`

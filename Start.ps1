@@ -5,5 +5,5 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Continue'
 
-. "$PSScriptRoot\App\Core\Bootstrap.ps1"
+. "$PSScriptRoot\src\Core\Bootstrap.ps1"
 Start-FssApplication -RootPath $PSScriptRoot

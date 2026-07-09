@@ -26,3 +26,11 @@
 - Troubleshooting guiado.
 - Dashboard.
 - Relatórios HTML/TXT/JSON.
+
+## v1.2.0
+
+- Estrutura migrada de `App` para `src`.
+- Incluída camada `Core` expandida.
+- Incluídas pastas `Helpers`, `Validators` e `RulesEngine`.
+- Incluída pasta `KnowledgeBase` para referências e recomendações em JSON.
+- Documentação atualizada para MVC + Service Layer.
