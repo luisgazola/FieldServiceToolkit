@@ -1,21 +1,22 @@
 function Write-FssHeader {
-    param([string]$Title = 'FieldServiceSuite')
+    param([string]$Title)
     Clear-Host
+    Write-Host ''
     Write-Host '╔══════════════════════════════════════════════════════╗' -ForegroundColor DarkCyan
-    Write-Host ('║ {0,-52} ║' -f $Title) -ForegroundColor Cyan
+    Write-Host ("║ {0,-52} ║" -f $Title.ToUpper()) -ForegroundColor Cyan
     Write-Host '╚══════════════════════════════════════════════════════╝' -ForegroundColor DarkCyan
+    Write-Host ''
 }
-function Write-FssStatus { param([string]$Message,[ValidateSet('OK','WARN','CRIT','INFO')]$Level='INFO')
-    $color = @{OK='Green';WARN='Yellow';CRIT='Red';INFO='Cyan'}[$Level]
-    $icon = @{OK='✓';WARN='!';CRIT='✖';INFO='•'}[$Level]
-    Write-Host "[$icon] $Message" -ForegroundColor $color
+function Write-FssStatus {
+    param([string]$Message,[ValidateSet('OK','WARN','CRIT','INFO')]$Level='INFO')
+    $map = @{ OK='Green'; WARN='Yellow'; CRIT='Red'; INFO='Cyan' }
+    $icon = @{ OK='[OK]'; WARN='[!]'; CRIT='[X]'; INFO='[i]' }
+    Write-Host ("{0} {1}" -f $icon[$Level],$Message) -ForegroundColor $map[$Level]
 }
-function Read-FssOption { param([string]$Prompt='Escolha')
-    Write-Host ''; Read-Host $Prompt
-}
+function Read-FssOption { param([string]$Prompt='Escolha') return (Read-Host $Prompt).Trim() }
 function Pause-Fss { Write-Host ''; Read-Host 'Pressione ENTER para continuar' | Out-Null }
 function Show-FssMenu {
-    Write-FssHeader 'FieldServiceSuite - Menu Principal'
+    Write-FssHeader 'FieldServiceSuite MVC'
     Write-Host '1. Novo atendimento'
     Write-Host '2. Diagnóstico rápido'
     Write-Host '3. Troubleshooting guiado'
@@ -29,5 +30,6 @@ function Show-FssMenu {
     Write-Host '11. Dashboard'
     Write-Host '12. Gerar relatório'
     Write-Host '0. Sair'
+    Write-Host ''
 }
 Export-ModuleMember -Function *

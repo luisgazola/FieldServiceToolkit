@@ -1,14 +1,37 @@
-# FieldServiceSuite
+# FieldServiceSuite MVC
 
-Ferramenta PowerShell para técnico Field Service no dia a dia: atendimento, inventário, diagnóstico rápido, troubleshooting guiado, dashboard e relatórios HTML/TXT/JSON.
+Ferramenta PowerShell para o dia a dia de Field Service, estruturada em padrão MVC adaptado para scripts modulares.
 
-## Requisitos
+## Objetivo
 
-- Windows 10 ou Windows 11
-- PowerShell 5.1 ou PowerShell 7+
-- Execução como administrador recomendada para módulos de energia e algumas coletas
+Registrar atendimento, coletar inventário, executar diagnóstico rápido, orientar troubleshooting, exibir dashboard e gerar relatórios em HTML, TXT e JSON.
 
-## Como executar
+## Arquitetura MVC
+
+```text
+FieldServiceSuite
+├── Start.ps1
+├── App
+│   ├── Core
+│   │   └── Bootstrap.ps1
+│   ├── Models
+│   ├── Views
+│   ├── Controllers
+│   └── Services
+├── Config
+├── Reports
+├── Logs
+└── Docs
+```
+
+## Camadas
+
+- **Models**: objetos de dados do atendimento e diagnóstico.
+- **Views**: interface de console, menu e dashboard.
+- **Controllers**: orquestração do fluxo de uso.
+- **Services**: coleta técnica, regras, recomendações, relatórios, logs e validações.
+
+## Execução
 
 ```powershell
 Set-ExecutionPolicy -Scope Process Bypass
@@ -35,18 +58,12 @@ Set-ExecutionPolicy -Scope Process Bypass
 
 ## Relatórios
 
-Os relatórios são salvos em:
-
 ```text
 Reports\ANO\MES\DIA\CHAMADO-SERIAL\
 ```
 
-Formatos gerados:
+Arquivos gerados:
 
-- HTML
-- TXT
-- JSON
-
-## Observação
-
-O projeto prioriza uso prático em campo e baixa dependência. Alterações de energia exigem confirmação via menu e podem exigir permissão administrativa.
+- `relatorio.html`
+- `relatorio.txt`
+- `relatorio.json`

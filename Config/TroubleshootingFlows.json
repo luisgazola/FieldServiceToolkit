@@ -1,9 +1,5 @@
 {
-  "notebook lento": ["Verificar uso de RAM", "Verificar uso de CPU", "Verificar disco/SMART", "Verificar espaço livre", "Verificar drivers com erro", "Verificar eventos críticos"],
-  "lento": ["Verificar uso de RAM", "Verificar uso de CPU", "Verificar disco/SMART", "Verificar espaço livre", "Verificar inicialização", "Verificar eventos críticos"],
-  "sem internet": ["Verificar adaptador ativo", "Validar IP local", "Testar gateway", "Testar DNS", "Testar internet", "Verificar driver de rede"],
-  "wifi": ["Verificar adaptador Wi-Fi", "Validar IP", "Testar gateway", "Testar DNS", "Verificar driver", "Validar intensidade do sinal manualmente"],
-  "bateria": ["Coletar relatório de bateria", "Calcular desgaste", "Validar carregador", "Validar autonomia real", "Recomendar troca se desgaste alto"],
-  "não liga": ["Validar fonte/carregador", "Validar LED de carga", "Validar bateria", "Validar sinais de energia", "Registrar evidências no relatório"],
-  "tela azul": ["Verificar eventos críticos", "Verificar WHEA", "Verificar drivers com erro", "Verificar disco/SMART", "Registrar código do erro se disponível"]
+  "notebook_lento": ["RAM", "CPU", "Disco/SMART", "Espaço livre", "Inicialização", "Drivers", "Conclusão"],
+  "sem_internet": ["Adaptador ativo", "IP", "Gateway", "DNS", "Ping externo", "Driver de rede", "Conclusão"],
+  "bateria": ["Carga", "Carregador", "Capacidade", "Autonomia", "Energia", "Conclusão"]
 }

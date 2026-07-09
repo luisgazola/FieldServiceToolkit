@@ -1,13 +1,10 @@
-# Changelog
+# CHANGELOG
 
-## v1.0.0
+## v1.1-MVC
 
-- Cadastro do atendimento com Regex
-- Diagnóstico rápido
-- Inventário de hardware
-- Troubleshooting guiado por sintoma
-- Motor simples de regras
-- Recomendações automáticas
-- Dashboard no terminal
-- Relatórios HTML, TXT e JSON
-- Organização Reports\ANO\MES\DIA\CHAMADO-SERIAL\
+- Reorganização para padrão MVC.
+- Separação entre Models, Views, Controllers e Services.
+- Bootstrap centralizado.
+- Dashboard mantido como View.
+- Regras e recomendações movidas para Services.
+- Relatórios mantidos em HTML, TXT e JSON.

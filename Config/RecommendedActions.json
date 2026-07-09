@@ -1,11 +1,7 @@
 {
-  "HighMemory": "RAM alta: fechar processos desnecessários, revisar inicialização automática e considerar upgrade de memória.",
-  "HighCpu": "CPU alta: identificar processos no topo, verificar atualizações pendentes e validar temperatura/refrigeração.",
-  "DiskFull": "Disco com pouco espaço: remover temporários, validar perfil de usuário e liberar espaço antes de atualizações.",
-  "DiskSmart": "SMART com alerta: orientar backup imediato e avaliar substituição do disco/SSD.",
-  "BatteryWear": "Bateria degradada: validar autonomia real, testar carregador e recomendar troca se necessário.",
-  "NetworkGateway": "Gateway falhando: verificar cabo/Wi-Fi, IP, DHCP e restrições da rede local.",
-  "NetworkDns": "DNS falhando: testar resolução, validar DNS recebido por DHCP e política da rede.",
-  "DriverError": "Driver com erro: coletar Hardware ID, reinstalar driver do fabricante e reiniciar se necessário.",
-  "CriticalEvents": "Eventos críticos encontrados: analisar horário dos eventos e cruzar com o defeito relatado."
+  "ram_alta": "Verificar processos, inicialização automática e considerar upgrade quando aplicável.",
+  "cpu_alta": "Identificar processo consumidor e validar temperatura.",
+  "driver_erro": "Coletar Hardware ID e reinstalar driver pelo fabricante ou imagem corporativa.",
+  "rede_falha": "Validar IP, gateway, DNS, cabo/Wi-Fi e política local.",
+  "disco_alerta": "Orientar backup, registrar evidência e recomendar substituição."
 }
