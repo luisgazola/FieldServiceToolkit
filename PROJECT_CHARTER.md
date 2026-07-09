@@ -401,7 +401,7 @@ Uma nova funcionalidade somente será aceita se:
 
 ## 26. Filosofia do Projeto
 
-O FieldServiceSuite Enterprise não busca ser o software com mais funcionalidades, mas sim uma ferramenta confiável, organizada e eficiente para o trabalho diário do técnico de Field Service.
+O FieldServiceSuite não busca ser o software com mais funcionalidades, mas sim uma ferramenta confiável, organizada e eficiente para o trabalho diário do técnico de Field Service.
 
 Cada recurso adicionado deve responder a uma pergunta simples:
 
