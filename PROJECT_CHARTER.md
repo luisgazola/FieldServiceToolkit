@@ -1,8 +1,8 @@
 # PROJECT_CHARTER.md
 
-# FieldServiceSuite Enterprise
+# FieldServiceSuite
 
-**Versão:** 1.0.0  
+**Versão:** 1.2.0  
 **Status:** Em desenvolvimento  
 **Autor:** Luís Gazola  
 **Licença:** MIT
@@ -11,7 +11,7 @@
 
 ## 1. Visão do Projeto
 
-O FieldServiceSuite Enterprise é uma ferramenta desenvolvida em PowerShell destinada a técnicos de Field Service, Suporte Técnico e Infraestrutura.
+O FieldServiceSuite é uma ferramenta desenvolvida em PowerShell destinada a técnicos de Field Service, Suporte Técnico e Infraestrutura.
 
 Seu propósito é padronizar o processo de atendimento técnico presencial através da coleta automatizada de informações, execução de diagnósticos, orientação de troubleshooting e geração de relatórios profissionais.
 
