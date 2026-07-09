@@ -1,0 +1,4 @@
+{
+  "temperatureC": { "okMax": 50, "attentionMax": 60, "criticalAbove": 60 },
+  "freeSpacePercent": { "okMin": 20, "attentionMin": 10, "criticalBelow": 10 }
+}

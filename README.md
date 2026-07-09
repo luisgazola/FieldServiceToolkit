@@ -1,28 +1,106 @@
-# FieldServiceToolkit
+# FieldServiceSuite
 
-Toolkit em PowerShell 7 para apoio técnico em Field Service.
+Ferramenta PowerShell para técnico de **Field Service** registrar atendimento, coletar inventário de hardware, executar diagnóstico rápido, seguir troubleshooting guiado, visualizar dashboard e gerar relatório técnico.
 
-## Recursos
+## Versão
 
-- Menu interativo.
-- Diagnóstico completo ou por módulo.
-- Coleta técnico, cliente/escola e número do chamado.
-- Identifica hostname, fabricante, modelo e serial da BIOS.
-- Analisa placa-mãe, CPU, memória e discos.
-- Verifica saúde de SSD/NVMe/HD via Get-PhysicalDisk.
-- Verifica bateria.
-- Verifica BitLocker.
-- Verifica atualizações pendentes do Windows.
-- Verifica logs recentes do Windows.
-- Testa rede sem alterar configurações corporativas.
-- Permite opções controladas de energia.
-- Gera relatório TXT organizado por data, chamado e serial.
+`v1.2.0` — arquitetura `src` com MVC + Service Layer.
 
-## Requisito
+## Funcionalidades
 
-PowerShell 7.
+- Cadastro do atendimento com Regex
+- Inventário de hardware
+- Diagnóstico rápido
+- Disco/SMART
+- Bateria
+- Rede
+- Energia
+- Drivers
+- Checklist manual
+- Troubleshooting guiado
+- Motor simples de regras
+- Recomendações automáticas
+- Dashboard
+- Relatórios em HTML, TXT e JSON
 
 ## Execução
 
 ```powershell
-pwsh .\src\FieldServiceToolkit.ps1
+Set-ExecutionPolicy -Scope Process Bypass
+.\Start.ps1
+```
+
+## Menu
+
+```text
+1. Novo atendimento
+2. Diagnóstico rápido
+3. Troubleshooting guiado
+4. Inventário de hardware
+5. Rede
+6. Disco/SMART
+7. Bateria
+8. Energia
+9. Drivers
+10. Checklist manual
+11. Dashboard
+12. Gerar relatório
+0. Sair
+```
+
+## Estrutura
+
+```text
+FieldServiceSuite
+├── Start.ps1
+├── src
+│   ├── Core
+│   ├── Controllers
+│   ├── Models
+│   ├── Services
+│   ├── Views
+│   ├── Helpers
+│   ├── Validators
+│   └── RulesEngine
+├── Config
+├── KnowledgeBase
+├── Assets
+├── Docs
+├── Tests
+├── Reports
+└── Logs
+```
+
+## Relatórios
+
+Os relatórios são salvos em:
+
+```text
+Reports\ANO\MES\DIA\CHAMADO-SERIAL\
+```
+
+Formatos gerados:
+
+- HTML
+- TXT
+- JSON
+
+## Documentação
+
+- `Docs/ARCHITECTURE.md`
+- `Docs/DIAGRAMS.md`
+- `Docs/MVC-SERVICE-LAYER.md`
+- `Docs/GUIA-DE-USO.md`
+- `Docs/TROUBLESHOOTING.md`
+- `Docs/REQUISITOS-FUNCIONAIS.md`
+- `Docs/REQUISITOS-NAO-FUNCIONAIS.md`
+- `Docs/DEVELOPER-GUIDE.md`
+
+
+## Governança do Projeto
+
+O escopo, princípios, arquitetura, critérios de qualidade e regras de evolução estão definidos em:
+
+- `PROJECT_CHARTER.md`
+
+Esse documento deve orientar qualquer nova funcionalidade para manter o foco no uso real de Field Service.
