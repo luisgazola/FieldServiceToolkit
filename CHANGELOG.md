@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.1 - Correção do checklist manual
+
+- Corrigida a exibição dos itens do checklist manual.
+- Incluídas categorias, códigos e orientações para cada item checado.
+- Adicionada validação de resposta para aceitar somente S, N ou NA.
+
+
 ## v1.1-MVC-Docs
 
 ### Adicionado
